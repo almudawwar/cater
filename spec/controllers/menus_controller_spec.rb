@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.describe Api::V1::MenusController, type: :controller do
   describe 'GET #index' do
     it 'returns :ok response' do

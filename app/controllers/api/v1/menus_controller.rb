@@ -8,6 +8,8 @@ class Api::V1::MenusController < ApplicationController
   end
 
   def show
+    render json: {}, status: :not_found and return unless @menu
+
     render json: @menu
   end
 

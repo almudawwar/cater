@@ -2,9 +2,9 @@ class Api::V1::MenusController < ApplicationController
   before_action :set_menu, only: %i[show update destroy]
 
   def index
-    @menus = Menu.page(current_page)
+    @menus = MenuSearchQuery.call(index_params)
 
-    render json: @menus
+    render json: { data: @menus, next_page: @menus.next_page }
   end
 
   def show
@@ -37,8 +37,8 @@ class Api::V1::MenusController < ApplicationController
 
   private
 
-  def current_page
-    params[:page] || 1
+  def index_params
+    params.permit(:page, :search_term, :sort_direction)
   end
 
   def set_menu

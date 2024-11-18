@@ -5,4 +5,7 @@ class Menu < ApplicationRecord
   validates_length_of :title, minimum: 3
 
   validates :currency, inclusion: { in: %w[EUR] }
+
+  scope :by_title, ->(term) { where("title ilike '%#{term}%'") }
+  scope :sorted_price, ->(sort) { order(price: sort) }
 end

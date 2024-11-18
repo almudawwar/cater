@@ -15,8 +15,8 @@ ActiveRecord::Schema[7.1].define(version: 2024_11_15_183412) do
   enable_extension "plpgsql"
 
   create_table "menus", force: :cascade do |t|
-    t.string "title"
-    t.bigint "price"
+    t.string "title", null: false
+    t.decimal "price", precision: 8, scale: 2, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

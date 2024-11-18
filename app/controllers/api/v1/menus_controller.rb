@@ -1,8 +1,8 @@
 class Api::V1::MenusController < ApplicationController
-  before_action :set_menu, only: %i[ show update destroy ]
+  before_action :set_menu, only: %i[show update destroy]
 
   def index
-    @menus = Menu.all
+    @menus = Menu.page(current_page)
 
     render json: @menus
   end
@@ -36,11 +36,16 @@ class Api::V1::MenusController < ApplicationController
   end
 
   private
-    def set_menu
-      @menu = Menu.find_by(id: params[:id])
-    end
 
-    def menu_params
-      params.require(:menu).permit(:title, :price)
-    end
+  def current_page
+    params.permit(:page) || 1
+  end
+
+  def set_menu
+    @menu = Menu.find_by(id: params[:id])
+  end
+
+  def menu_params
+    params.require(:menu).permit(:title, :price)
+  end
 end

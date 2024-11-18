@@ -44,6 +44,8 @@ group :development, :test do
   gem 'debug', platforms: %i[mri mswin mswin64 mingw x64_mingw]
   gem 'fabrication'
   gem 'faker', '~> 3.4', '>= 3.4.2'
+  gem 'pry', '~> 0.15.0'
+  gem 'pry-byebug'
   gem 'rspec-rails', '~> 7.0.0'
 end
 

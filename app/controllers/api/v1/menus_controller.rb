@@ -38,7 +38,7 @@ class Api::V1::MenusController < ApplicationController
   private
 
   def current_page
-    params.permit(:page) || 1
+    params[:page] || 1
   end
 
   def set_menu

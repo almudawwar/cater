@@ -1,21 +1,17 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import MenuList from './components/MenuList'
 import SearchInput from './components/SearchInput'
-import { Menu } from './api/Menu.type'
-import { fetchMenus } from './api/fetchMenus'
+import { useFetchMenus } from './hooks/useFetchMenus'
+
+
 
 function App() {
-  const [menus, setMenus] = useState<Menu[]>([])
+  const [page, setPage] = useState(0)
+  // const [sortDirection, setDortDirection] = useState('')
+  const [searchTerm, setSearchTerm] = useState('')
 
-  useEffect(() => {
-    const getMenus = async () => {
-      const res = await fetchMenus({page: 0, sortDirection: '', searchTerm: ''})
+  const { data, isLoading } = useFetchMenus({ page, searchTerm })
 
-      setMenus(res.data.menus)
-    }
-
-    getMenus()
-  }, [])
 
   return (
     <div className="relative flex min-h-screen flex-col overflow-hidden bg-orange-200">
@@ -23,8 +19,12 @@ function App() {
         <div className="m-10">
           <h1 className="text-center text-5xl font-mono tracking-wide">Cater</h1>
         </div>
-        <SearchInput />
-        <MenuList menus={menus} />
+        <SearchInput onSubmit={(term) => setSearchTerm(term)} />
+        {
+          isLoading ?
+          <div>Loading...</div> :
+          <MenuList menus={data?.menus || []} />
+        }
       </div>
     </div>
   )

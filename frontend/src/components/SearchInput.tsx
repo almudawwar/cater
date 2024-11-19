@@ -1,5 +1,25 @@
-export default function SearchInput() {
+import { useState } from "react"
+
+interface SearchInputProps {
+  onSubmit: (term: string) => void
+}
+
+export default function SearchInput({ onSubmit }: SearchInputProps) {
+  const [searchTerm, setSearchTerm] = useState('')
+
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault()
+    onSubmit(searchTerm)
+  }
+
   return (
-    <input placeholder="Search menus..." className="rounded p-2 mx-auto bg-orange-100" />
+    <form onSubmit={handleSubmit} className="mx-auto">
+      <input
+        placeholder="Search menus..."
+        className="rounded p-2 bg-orange-100"
+        value={searchTerm}
+        onChange={(e) => setSearchTerm(e.target.value)}
+      />
+    </form>
   )
 }

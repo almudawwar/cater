@@ -1,14 +1,15 @@
 import axios from "axios";
 import { apiUrls } from "../constants";
+import { useQuery } from "@tanstack/react-query";
 
-interface fetchProps {
-  page: number | null
-  sortDirection: string | null
-  searchTerm: string | null
+export interface FetchMenusParams {
+  page?: number
+  sortDirection?: string
+  searchTerm?: string
 }
 
-export  function fetchMenus({ page, sortDirection, searchTerm }: fetchProps) {
-  return axios.get(apiUrls.base + apiUrls.menus,
+export async function fetchMenus({ page, sortDirection, searchTerm }: FetchMenusParams) {
+  const { data } =  await axios.get(apiUrls.base + apiUrls.menus,
     {
       params: {
         page,
@@ -17,4 +18,6 @@ export  function fetchMenus({ page, sortDirection, searchTerm }: fetchProps) {
       }
     }
   )
+
+  return data
 }

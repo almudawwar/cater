@@ -4,7 +4,7 @@ class Api::V1::MenusController < ApplicationController
   def index
     @menus = MenuSearchQuery.call(index_params)
 
-    render json: { data: @menus, next_page: @menus.next_page }
+    render json: { menus: @menus, next_page: @menus.next_page }
   end
 
   def show

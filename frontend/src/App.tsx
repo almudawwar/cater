@@ -15,7 +15,7 @@ function App() {
     }
 
     getMenus()
-  })
+  }, [])
 
   return (
     <div className="relative flex min-h-screen flex-col overflow-hidden bg-orange-200">

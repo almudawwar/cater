@@ -10,7 +10,7 @@ export default function MenuList({ menus }: MenuListProps) {
     <div className="flex flex-col gap-4 bg-orange-300 px-5 py-7 rounded-lg">
       {
         menus.map(menu =>{
-          return <MenuListItem menu={menu} />
+          return <MenuListItem menu={menu} key={menu.id} />
         })
       }
     </div>

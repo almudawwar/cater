@@ -1,30 +1,22 @@
+import { useEffect, useState } from 'react'
 import MenuList from './components/MenuList'
 import SearchInput from './components/SearchInput'
-
-const menus = [
-  {
-    title: 'Menu 2',
-    price: 34.5,
-    currency: 'EUR',
-  },
-  {
-    title: 'Menu 3',
-    price: 34.5,
-    currency: 'EUR',
-  },
-  {
-    title: 'Menu With even bigger name',
-    price: 34.5,
-    currency: 'EUR',
-  },
-  {
-    title: 'Menu Middle',
-    price: 34.5,
-    currency: 'EUR',
-  },
-]
+import { Menu } from './api/Menu.type'
+import { fetchMenus } from './api/fetchMenus'
 
 function App() {
+  const [menus, setMenus] = useState<Menu[]>([])
+
+  useEffect(() => {
+    const getMenus = async () => {
+      const res = await fetchMenus({page: 0, sortDirection: '', searchTerm: ''})
+
+      setMenus(res.data.menus)
+    }
+
+    getMenus()
+  })
+
   return (
     <div className="relative flex min-h-screen flex-col overflow-hidden bg-orange-200">
       <div className="container flex flex-col mx-auto h-max max-w-6xl p-5 gap-3">

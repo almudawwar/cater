@@ -1,4 +1,5 @@
-import MenuListItem, { Menu } from "./MenuListItem"
+import { Menu } from "../api/Menu.type"
+import MenuListItem from "./MenuListItem"
 
 interface MenuListProps {
   menus: Menu[]

@@ -1,8 +1,4 @@
-export type Menu = {
-  title: string
-  price: number
-  currency: string
-}
+import { Menu } from "../api/Menu.type"
 
 interface MenuListItemProps {
   menu: Menu

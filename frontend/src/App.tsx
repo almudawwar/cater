@@ -26,7 +26,7 @@ function App() {
         </div>
         <div className='flex gap-2 mx-auto'>
           <SearchInput onSubmit={(term) => setSearchTerm(term)} />
-          <SortButton onSubmit={(direction) => setSortDirection(direction)} />
+          <SortButton sortDirection={sortDirection} onClick={(dir) => setSortDirection(dir)} />
         </div>
         {
           isLoading ?

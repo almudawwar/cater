@@ -4,6 +4,7 @@ import SearchInput from './components/SearchInput'
 import { useFetchMenus } from './hooks/useFetchMenus'
 import { Menu } from './api/Menu.type'
 import SortButton from './components/SortButton'
+import LoadingList from './components/LoadingList'
 
 
 
@@ -11,7 +12,7 @@ function App() {
   const [sortDirection, setSortDirection] = useState('')
   const [searchTerm, setSearchTerm] = useState('')
 
-  const { data, isLoading, fetchNextPage, hasNextPage } = useFetchMenus({ searchTerm, sortDirection })
+  const { data, isFetching, fetchNextPage, hasNextPage } = useFetchMenus({ searchTerm, sortDirection })
   let menus: Menu[] = []
 
   if(data?.pages) {
@@ -29,12 +30,12 @@ function App() {
           <SortButton sortDirection={sortDirection} onClick={(dir) => setSortDirection(dir)} />
         </div>
         {
-          isLoading ?
-          <div>Loading...</div> :
+          isFetching && !menus.length ?
+          <LoadingList /> :
           <MenuList menus={menus} />
         }
         {
-          hasNextPage &&
+          hasNextPage && !isFetching &&
           <button className="bg-orange-400 hover:bg-orange-300 active:bg-orange-300 rounded-md p-2 w-fit mx-auto" onClick={() => fetchNextPage()}>Load more</button>
         }
       </div>

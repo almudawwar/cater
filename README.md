@@ -6,8 +6,10 @@ This is a small React + Rails API app that show data about catering menus and al
 ### System dependencies
 * ruby 3.0.0
     * You can install it with [RVM](https://rvm.io/) `rvm install 3.0.0`
+* bundler
+    * `gem install bundler`
 * postgresql
-    * You can install it with [homebrew](https://brew.sh/) `brew install postgresql@16`)
+    * You can install it with [homebrew](https://brew.sh/) `brew install postgresql@16`
     * Then start the service by running `brew services start postgresql@16`
 
 ### Configuration

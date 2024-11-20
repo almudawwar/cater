@@ -3,14 +3,15 @@ import MenuList from './components/MenuList'
 import SearchInput from './components/SearchInput'
 import { useFetchMenus } from './hooks/useFetchMenus'
 import { Menu } from './api/Menu.type'
+import SortButton from './components/SortButton'
 
 
 
 function App() {
-  // const [sortDirection, setDortDirection] = useState('')
+  const [sortDirection, setSortDirection] = useState('')
   const [searchTerm, setSearchTerm] = useState('')
 
-  const { data, isLoading, fetchNextPage, hasNextPage } = useFetchMenus({ searchTerm })
+  const { data, isLoading, fetchNextPage, hasNextPage } = useFetchMenus({ searchTerm, sortDirection })
   let menus: Menu[] = []
 
   if(data?.pages) {
@@ -23,7 +24,10 @@ function App() {
         <div className="m-10">
           <h1 className="text-center text-5xl font-mono tracking-wide">Cater</h1>
         </div>
-        <SearchInput onSubmit={(term) => setSearchTerm(term)} />
+        <div className='flex gap-2 mx-auto'>
+          <SearchInput onSubmit={(term) => setSearchTerm(term)} />
+          <SortButton onSubmit={(direction) => setSortDirection(direction)} />
+        </div>
         {
           isLoading ?
           <div>Loading...</div> :

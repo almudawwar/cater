@@ -1,6 +1,6 @@
 # Cater README
 
-This is a small React + Rails API app that show data about catering menus and allows search by menu name. It uses `react-query` to implement an infinite scroll thtough the list.
+This is a small React + Rails API app that show data about catering menus and allows search by menu name. It uses `react-query` to implement an infinite scroll thtough the list and TailwindCSS to build the design.
 
 
 ### System dependencies

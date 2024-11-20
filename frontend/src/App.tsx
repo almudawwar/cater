@@ -2,16 +2,20 @@ import { useState } from 'react'
 import MenuList from './components/MenuList'
 import SearchInput from './components/SearchInput'
 import { useFetchMenus } from './hooks/useFetchMenus'
+import { Menu } from './api/Menu.type'
 
 
 
 function App() {
-  const [page, setPage] = useState(0)
   // const [sortDirection, setDortDirection] = useState('')
   const [searchTerm, setSearchTerm] = useState('')
 
-  const { data, isLoading } = useFetchMenus({ page, searchTerm })
+  const { data, isLoading, fetchNextPage, hasNextPage } = useFetchMenus({ searchTerm })
+  let menus: Menu[] = []
 
+  if(data?.pages) {
+    menus = data?.pages.map(page => page.menus).flat()
+  }
 
   return (
     <div className="relative flex min-h-screen flex-col overflow-hidden bg-orange-200">
@@ -23,7 +27,11 @@ function App() {
         {
           isLoading ?
           <div>Loading...</div> :
-          <MenuList menus={data?.menus || []} />
+          <MenuList menus={menus} />
+        }
+        {
+          hasNextPage &&
+          <button onClick={() => fetchNextPage()}>Load more</button>
         }
       </div>
     </div>

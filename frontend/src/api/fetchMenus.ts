@@ -1,6 +1,5 @@
 import axios from "axios";
 import { apiUrls } from "../constants";
-import { useQuery } from "@tanstack/react-query";
 
 export interface FetchMenusParams {
   page?: number

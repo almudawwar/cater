@@ -1,9 +1,16 @@
-import { useQuery } from "@tanstack/react-query"
+import { useInfiniteQuery } from "@tanstack/react-query"
 import { fetchMenus, FetchMenusParams } from "../api/fetchMenus"
 
-export const useFetchMenus = ({ page, searchTerm, sortDirection }: FetchMenusParams) => {
-  return useQuery({
-    queryKey: ['menus', { page, sortDirection, searchTerm }],
-    queryFn: () => fetchMenus({ page, sortDirection, searchTerm })
+export const useFetchMenus = ({ searchTerm, sortDirection }: FetchMenusParams) => {
+  return useInfiniteQuery({
+    queryKey: ['menus', { sortDirection, searchTerm }],
+    queryFn: ({ pageParam }) => fetchMenus({ page: pageParam, searchTerm, sortDirection }),
+    initialPageParam: 0,
+    getNextPageParam: (lastPage) => {
+      if (lastPage.next_page) {
+        return lastPage.next_page
+      }
+      return undefined
+    },
   })
 }

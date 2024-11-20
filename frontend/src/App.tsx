@@ -35,7 +35,7 @@ function App() {
         }
         {
           hasNextPage &&
-          <button onClick={() => fetchNextPage()}>Load more</button>
+          <button className="bg-orange-400 hover:bg-orange-300 active:bg-orange-300 rounded-md p-2 w-fit mx-auto" onClick={() => fetchNextPage()}>Load more</button>
         }
       </div>
     </div>

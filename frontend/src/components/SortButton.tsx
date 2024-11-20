@@ -39,7 +39,7 @@ export default function SortButton({ onSubmit }: SortButtonProps) {
   const icon = sortDirection === 'asc' ? iconUp : iconDown 
 
   return (
-    <button className="flex items-center bg-orange-400 rounded-md p-2 text-sm" onClick={handleOnClick}>
+    <button className="flex items-center bg-orange-400 hover:bg-orange-300 active:bg-orange-300 rounded-md p-2 text-sm" onClick={handleOnClick}>
       {iconSort}
       {'Price'}
       {showIcon && icon}

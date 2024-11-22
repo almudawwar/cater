@@ -4,6 +4,9 @@ This is a small React + Rails API app that show data about catering menus and al
 
 
 ### System dependencies
+
+If you use docker you don't need to worry about this.
+
 * ruby 3.0.0
     * You can install it with [RVM](https://rvm.io/) `rvm install 3.0.0`
 * bundler
@@ -12,7 +15,30 @@ This is a small React + Rails API app that show data about catering menus and al
     * You can install it with [homebrew](https://brew.sh/) `brew install postgresql@16`
     * Then start the service by running `brew services start postgresql@16`
 
-### Configuration
+### How to run
+#### With Docker
+1. Check out the repository
+
+`git clone git@github.com:almudawwar/cater.git`
+
+`cd cater`
+
+2. Start the containers and create DB
+
+`docker-compose up -d`
+
+`docker-compose exec rails bundle exec rails db:create db:migrate db:seed`
+
+3. Start the frontend app (locally for now)
+
+`cd frontend`
+
+`npm install`
+
+`npm run dev`
+
+Now visit on your browser http://localhost:5173
+
 #### Locally
 1. Check out the repository
 
@@ -24,12 +50,11 @@ This is a small React + Rails API app that show data about catering menus and al
 
 `bundle exec rails db:create db:migrate db:seed`
 
-### How to run
-1. Start the Rails API
+3. Start the Rails API
 
 `bundle exec rails s`
 
-2. Start the React app
+4. Start the React app
 
 On a different terminal window, run the following commands:
 
@@ -39,7 +64,7 @@ On a different terminal window, run the following commands:
 
 `npm run dev`
 
-Now on your browser visit http://localhost:5173
+Now visit on your browser http://localhost:5173
 
 ### How to run the test suite
     bundle exec rspec .

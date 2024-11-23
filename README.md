@@ -29,14 +29,6 @@ If you use docker you don't need to worry about this.
 
 `docker-compose exec rails bundle exec rails db:create db:migrate db:seed`
 
-3. Start the frontend app (locally for now)
-
-`cd frontend`
-
-`npm install`
-
-`npm run dev`
-
 Now visit on your browser http://localhost:5173
 
 #### Locally

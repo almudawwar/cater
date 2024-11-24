@@ -4,7 +4,7 @@
 #### With Docker
 1. Check out the repository
 
-`cd ..` and `docker-compose up -d`
+`cd ..` and `docker compose up -d`
 
 OR
 

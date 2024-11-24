@@ -3,20 +3,8 @@
 This is a small React + Rails API app that show data about catering menus and allows search by menu name. It uses `react-query` to implement an infinite scroll thtough the list and TailwindCSS to build the design.
 
 
-### System dependencies
-
-If you use docker you don't need to worry about this.
-
-* ruby 3.0.0
-    * You can install it with [RVM](https://rvm.io/) `rvm install 3.0.0`
-* bundler
-    * `gem install bundler`
-* postgresql
-    * You can install it with [homebrew](https://brew.sh/) `brew install postgresql@16`
-    * Then start the service by running `brew services start postgresql@16`
-
-### How to run
-#### With Docker
+## How to run
+### With Docker
 1. Check out the repository
 
 `git clone git@github.com:almudawwar/cater.git`
@@ -25,13 +13,13 @@ If you use docker you don't need to worry about this.
 
 2. Start the containers and create DB
 
-`docker-compose up -d`
+`docker compose up -d`
 
-`docker-compose exec rails bundle exec rails db:create db:migrate db:seed`
+`docker compose exec rails bundle exec rails db:create db:migrate db:seed`
 
 Now visit on your browser http://localhost:5173
 
-#### Locally
+### Locally (Check system dependencies below)
 1. Check out the repository
 
 `git clone git@github.com:almudawwar/cater.git`
@@ -60,3 +48,16 @@ Now visit on your browser http://localhost:5173
 
 ### How to run the test suite
     bundle exec rspec .
+
+
+### System dependencies
+
+If you use docker you don't need to worry about this.
+
+* ruby 3.0.0
+    * You can install it with [RVM](https://rvm.io/) `rvm install 3.0.0`
+* bundler
+    * `gem install bundler`
+* postgresql
+    * You can install it with [homebrew](https://brew.sh/) `brew install postgresql@16`
+    * Then start the service by running `brew services start postgresql@16`

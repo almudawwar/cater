@@ -11,9 +11,9 @@ export default function MenuList({ menus }: MenuListProps) {
   })
 
   return (
-    <div className="flex flex-col gap-4">
+    <div className="flex flex-col gap-4 items-stretch">
       {
-        menus.length ? renderedMenus : <div>No results</div>
+        menus.length ? renderedMenus : <div className="text-center p-5">No results</div>
       }
     </div>
   )

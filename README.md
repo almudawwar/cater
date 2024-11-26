@@ -7,7 +7,7 @@ This is a small React + Rails API app that show data about catering menus and al
 ### With Docker
 1. Check out the repository
 
-`git clone git@github.com:almudawwar/cater.git`
+`git clone git@github.com:rpgos/cater.git`
 
 `cd cater`
 
@@ -22,7 +22,7 @@ Now visit on your browser http://localhost:5173
 ### Locally (Check system dependencies below)
 1. Check out the repository
 
-`git clone git@github.com:almudawwar/cater.git`
+`git clone git@github.com:rpgos/cater.git`
 
 `cd cater`
 
@@ -47,6 +47,13 @@ On a different terminal window, run the following commands:
 Now visit on your browser http://localhost:5173
 
 ### How to run the test suite
+
+With Docker
+    
+    docker compose exec rails bundle exec rspec .
+
+Locally
+
     bundle exec rspec .
 
 

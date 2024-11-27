@@ -2,7 +2,7 @@ import { render, screen } from "@testing-library/react";
 import MenuList from "../../components/MenuList";
 import { Menu } from "../../api/Menu.type";
 
-describe('menus list', () => {
+describe('MenuList', () => {
   describe('without menus', () => {
     it('renders No Results', () => {
       render(<MenuList menus={[]} />)

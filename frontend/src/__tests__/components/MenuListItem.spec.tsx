@@ -2,7 +2,7 @@ import { render, screen } from "@testing-library/react";
 import MenuListItem from "../../components/MenuListItem";
 import { Menu } from "../../api/Menu.type";
 
-describe('item details', () => {
+describe('MenuListItem', () => {
   const menu: Menu = {
     id: 2,
     title: 'Test Menu',

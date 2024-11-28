@@ -24,6 +24,7 @@ export default function SearchInput({ onSubmit }: SearchInputProps) {
         className="rounded p-2 bg-orange-100"
         value={searchTerm}
         onChange={(e) => setSearchTerm(e.target.value)}
+        data-testid="search-input"
       />
       {iconEnter}
     </form>

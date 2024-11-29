@@ -23,13 +23,14 @@ function App() {
   }
 
   useEffect(() => {
+    // TODO: check possible bug here when searching by name and then remove search
     if(inView && hasNextPage) {
       fetchNextPage()
     }
   }, [inView])
 
   return (
-    <div className="relative flex min-h-screen flex-col overflow-hidden bg-orange-200">
+    <div className="relative flex min-h-screen flex-col overflow-hidden bg-orange-200" data-testid="app-container">
       <div className="container flex flex-col mx-auto h-max max-w-6xl p-5 gap-3">
         <div className="m-10">
           <h1 className="text-center text-5xl font-mono tracking-wide">Cater</h1>
@@ -45,7 +46,14 @@ function App() {
         }
         {
           hasNextPage && !isFetching &&
-          <button ref={ref} className="bg-orange-400 hover:bg-orange-300 active:bg-orange-300 rounded-md p-2 w-fit mx-auto" onClick={() => fetchNextPage()}>Load more</button>
+          <button
+            ref={ref}
+            className="bg-orange-400 hover:bg-orange-300 active:bg-orange-300 rounded-md p-2 w-fit mx-auto"
+            onClick={() => fetchNextPage()}
+            data-testid="load-more-button"
+          >
+              Load more
+          </button>
         }
       </div>
     </div>

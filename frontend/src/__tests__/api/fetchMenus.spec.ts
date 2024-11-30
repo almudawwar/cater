@@ -27,6 +27,7 @@ describe('#fetchMenus', () => {
       try {
         await fetchMenus({});
       } catch (error) {
+        // @ts-expect-error error has a message
         expect(error.message).toEqual('Network Error');
       }
     })

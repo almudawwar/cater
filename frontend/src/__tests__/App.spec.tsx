@@ -37,6 +37,7 @@ describe('App', () => {
 
   it('renders title and components', () => {
     menusSpy.mockReturnValue({
+      // @ts-expect-error No need for pageParams here
       data: { pages: [{menus: mockedMenus, next_page: null}] },
       isFetching: false,
       hasNextPage: true,
@@ -53,6 +54,7 @@ describe('App', () => {
   describe('While loading', () => {
     it('renders LoadingList', () => {
       menusSpy.mockReturnValue({
+        // @ts-expect-error No need for pageParams here
         data: { pages: [{menus: [], next_page: null}] },
         isFetching: true,
         hasNextPage: false,
@@ -76,6 +78,7 @@ describe('App', () => {
       const mockFetch = vi.fn()
 
       menusSpy.mockReturnValue({
+        // @ts-expect-error No need for pageParams here
         data: { pages: [{menus: mockedMenus, next_page: 2}] },
         isFetching: false,
         hasNextPage: true,

@@ -7,8 +7,6 @@ import SortButton from './components/SortButton'
 import LoadingList from './components/LoadingList'
 import { useInView } from 'react-intersection-observer'
 
-
-
 function App() {
   const [sortDirection, setSortDirection] = useState('')
   const [searchTerm, setSearchTerm] = useState('')
@@ -23,11 +21,10 @@ function App() {
   }
 
   useEffect(() => {
-    // TODO: check possible bug here when searching by name and then remove search
     if(inView && hasNextPage) {
       fetchNextPage()
     }
-  }, [inView])
+  }, [inView, hasNextPage])
 
   return (
     <div className="relative flex min-h-screen flex-col overflow-hidden bg-orange-200" data-testid="app-container">
